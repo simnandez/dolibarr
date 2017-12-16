@@ -7,7 +7,6 @@
  * Copyright (C) 2015       Florian Henry           <florian.henry@open-concept.pro>
  * Copyright (C) 2016       Josep Lluis Amador      <joseplluis@lliuretic.cat>
  * Copyright (C) 2016       Ferran Marcet      		<fmarcet@2byte.es>
- * Copyright (C) 2017       Juanjo Menent      		<jmenent@2byte.es>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -490,7 +489,7 @@ foreach ($search_array_options as $key => $val)
     $crit=$val;
     $tmpkey=preg_replace('/search_options_/','',$key);
     if ($val != '') $param.='&search_options_'.$tmpkey.'='.urlencode($val);
-} 	
+}
 
 // Show delete result message
 if (GETPOST('delsoc'))
@@ -600,9 +599,9 @@ if (! empty($arrayfields['s.fk_stcomm']['checked']))      print_liste_field_titr
 // Extra fields
 if (is_array($extrafields->attribute_label) && count($extrafields->attribute_label))
 {
-   foreach($extrafields->attribute_label as $key => $val) 
+   foreach($extrafields->attribute_label as $key => $val)
    {
-       if (! empty($arrayfields["ef.".$key]['checked'])) 
+       if (! empty($arrayfields["ef.".$key]['checked']))
        {
 			$align=$extrafields->getAlignFlag($key);
 			print_liste_field_titre($extralabels[$key],$_SERVER["PHP_SELF"],"ef.".$key,"",$param,($align?'align="'.$align.'"':''),$sortfield,$sortorder);
@@ -798,9 +797,9 @@ if (! empty($arrayfields['s.fk_stcomm']['checked']))
 // Extra fields
 if (is_array($extrafields->attribute_label) && count($extrafields->attribute_label))
 {
-   foreach($extrafields->attribute_label as $key => $val) 
+   foreach($extrafields->attribute_label as $key => $val)
    {
-		if (! empty($arrayfields["ef.".$key]['checked'])) 
+		if (! empty($arrayfields["ef.".$key]['checked']))
 		{
             $align=$extrafields->getAlignFlag($key);
             $typeofextrafield=$extrafields->attribute_type[$key];
@@ -851,13 +850,11 @@ print "</tr>\n";
 
 $var=True;
 
-$typenArray = $formcompany->typent_array(1);
-
 while ($i < min($num, $limit))
 {
 	$obj = $db->fetch_object($resql);
 	$var=!$var;
-	
+
 	$companystatic->id=$obj->rowid;
 	$companystatic->name=$obj->name;
 	$companystatic->canvas=$obj->canvas;
@@ -868,7 +865,7 @@ while ($i < min($num, $limit))
 	$companystatic->code_fournisseur=$obj->code_fournisseur;
     $companystatic->fk_prospectlevel=$obj->fk_prospectlevel;
     $companystatic->name_alias=$obj->name_alias;
-	
+
 	print "<tr ".$bc[$var].">";
 	if (! empty($arrayfields['s.nom']['checked']))
 	{
@@ -910,12 +907,12 @@ while ($i < min($num, $limit))
     if (! empty($arrayfields['s.zip']['checked']))
     {
         print "<td>".$obj->zip."</td>\n";
-    }        
+    }
     // State
     if (! empty($arrayfields['state.nom']['checked']))
     {
         print "<td>".$obj->state_name."</td>\n";
-    }        
+    }
     // Country
     if (! empty($arrayfields['country.code_iso']['checked']))
     {
@@ -928,6 +925,7 @@ while ($i < min($num, $limit))
     if (! empty($arrayfields['typent.code']['checked']))
     {
         print '<td align="center">';
+        if (! is_array($typenArray) || count($typenArray)==0) $typenArray = $formcompany->typent_array(1);
 		print $typenArray[$obj->typent_code];
 		print '</td>';
     }

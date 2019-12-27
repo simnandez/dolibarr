@@ -52,6 +52,32 @@ create table llx_object_lang
 
 ALTER TABLE llx_object_lang ADD UNIQUE INDEX uk_object_lang (fk_object, type_object, property, lang);
 
+-- MySql deprecated types: FLOAT(M,D), DOUBLE(M,D)
+ALTER TABLE llx_propal MODIFY total_ht numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propal MODIFY tva numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propal MODIFY localtax1 numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propal MODIFY localtax2 numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propal MODIFY total numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propal MODIFY multicurrency_tx numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propal MODIFY multicurrency_total_ht numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propal MODIFY multicurrency_total_tva numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propal MODIFY multicurrency_total_ttc numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY tva_tx numeric(6,3) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY localtax1_tx numeric(6,3) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY localtax2_tx numeric(6,3) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY subprice numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY total_ht numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY total_tva numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY total_localtax1 numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY total_localtax2 numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY total_ttc numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY buy_price_ht numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY multicurrency_subprice numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY multicurrency_total_ht numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY multicurrency_total_tva numeric(24,8) DEFAULT 0;
+ALTER TABLE llx_propaldet MODIFY multicurrency_total_ttc numeric(24,8) DEFAULT 0;
+
+
 
 
 
